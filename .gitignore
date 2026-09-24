@@ -1,0 +1,57 @@
+# Dependencies and build output
+backend/target/
+frontend/node_modules/
+frontend/dist/
+*.tsbuildinfo
+release/
+update/
+*.jar
+*.zip
+
+# Runtime data and secrets
+uploads/
+previews/
+data/
+logs/
+backups/
+.env
+.env.*
+!deploy/centos7/.env.example
+application-local.yml
+application-prod.yml
+backend/run-backend.args
+backend/start-backend.cmd
+*.pem
+*.key
+*.p12
+*.pfx
+*.sql.gz
+*.dump
+
+# Local tooling, notes and test artifacts
+.tools/
+.agent/
+.agents/
+.claude/
+.codex/
+.codex-tmp/
+.qoder/
+.workbuddy/
+.zcode/
+.superpowers/
+.playwright-cli/
+output/
+test-results/
+frontend/test-results/
+*.log
+*.err
+*.tmp
+*.bak
+*.orig
+
+# Editor and OS files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db

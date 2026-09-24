@@ -1,0 +1,4 @@
+ALTER TABLE ai_config ADD COLUMN name VARCHAR(100) NOT NULL DEFAULT '默认配置';
+ALTER TABLE ai_config ADD COLUMN is_active BOOLEAN NOT NULL DEFAULT FALSE;
+
+UPDATE ai_config SET is_active = TRUE WHERE id = 1;

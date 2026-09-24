@@ -1,0 +1,2 @@
+ALTER TABLE attachments
+    ADD COLUMN checksum VARCHAR(64) NOT NULL DEFAULT '';

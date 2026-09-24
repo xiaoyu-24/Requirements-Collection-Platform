@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/requirements_platform?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai}
+    username: ${DB_USERNAME:requirements_app}
+    password: ${DB_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-timeout: 30000
+      validation-timeout: 5000
+      max-lifetime: 1500000
+      keepalive-time: 60000
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate.jdbc.time_zone: Asia/Shanghai
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+
+app:
+  auth:
+    admin-initial-password: ${ADMIN_INITIAL_PASSWORD:}
+  attachments:
+    root-directory: ${ATTACHMENTS_ROOT:./uploads}
+    minimum-free-space-bytes: ${ATTACHMENTS_MINIMUM_FREE_SPACE_BYTES:0}
+    preview-directory: ${ATTACHMENTS_PREVIEW_ROOT:./previews}
+    libreoffice-executable: ${LIBREOFFICE_EXECUTABLE:libreoffice}
+    preview-timeout-seconds: ${ATTACHMENTS_PREVIEW_TIMEOUT_SECONDS:60}
+    preview-concurrency: ${ATTACHMENTS_PREVIEW_CONCURRENCY:2}
+  ai:
+    request-timeout-seconds: ${AI_REQUEST_TIMEOUT_SECONDS:30}
+    image-request-timeout-seconds: ${AI_IMAGE_REQUEST_TIMEOUT_SECONDS:60}
+  notifications:
+    reminder-cron: ${NOTIFICATIONS_REMINDER_CRON:0 0 9 * * *}
+    stale-after-days: ${NOTIFICATIONS_STALE_AFTER_DAYS:7}

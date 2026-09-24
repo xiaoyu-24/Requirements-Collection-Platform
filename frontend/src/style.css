@@ -1,0 +1,273 @@
+:root {
+  color: rgba(0, 0, 0, 0.88);
+  background: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 0; background: #f5f5f5; }
+button { font: inherit; }
+
+.app-shell { height: 100vh; min-height: 0; overflow: hidden; display: flex; flex-direction: column; }
+.ant-layout-header.pro-header,
+.pro-header {
+  height: 56px;
+  line-height: 56px;
+  padding: 0 24px;
+  background: #ffffff !important;
+  color: rgba(0, 0, 0, 0.88);
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 17px;
+  font-weight: 600;
+}
+.brand-icon { font-size: 20px; color: #1677ff; }
+.brand-title { margin-left: 10px; color: rgba(0, 0, 0, 0.88); }
+
+.pro-body-layout { flex: 1; min-height: 0; display: flex; }
+.sidebar {
+  height: 100%;
+  flex-shrink: 0;
+  background: #ffffff;
+  border-right: 1px solid #f0f0f0;
+}
+.sidebar nav { min-width: 0; padding-top: 8px; }
+.sidebar .ant-menu-light { border-right: none; }
+.sidebar .ant-menu-item { width: 100%; margin-inline: 0; border-radius: 0; }
+.main-content { min-width: 0; overflow-y: auto; padding: 20px 24px; background: #f5f5f5; }
+.main-content.requirements-list-content { padding: 24px 32px 48px; }
+
+.system-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-card,
+.list-table-card,
+.management-card,
+.system-page > .ant-card,
+.version-management-page > .ant-card { margin-bottom: 20px; }
+
+.filter-card .ant-card-body,
+.list-table-card .ant-card-body { padding: 20px; }
+.filter-form .ant-form-item { margin-bottom: 12px; }
+.filter-optional-hint { margin: 0 0 14px; color: rgba(0, 0, 0, 0.45); font-size: 13px; }
+.filter-actions { display: flex; justify-content: flex-end; margin-top: 4px; }
+
+.requirement-table .ant-table-cell,
+.system-table .ant-table-cell,
+.version-table .ant-table-cell,
+.management-table .ant-table-cell { vertical-align: middle; }
+
+.pagination-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 16px;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 13px;
+}
+
+.requirement-title-link {
+  color: #1677ff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.requirement-title-link:hover {
+  color: #4096ff;
+  text-decoration: underline;
+}
+
+.field-requirement-legend {
+  margin: 0 0 18px;
+  padding: 10px 12px;
+  border-left: 3px solid #1677ff;
+  background: #f0f7ff;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 13px;
+}
+
+.field-required { color: #ff4d4f; font-size: 12px; font-weight: 500; }
+.field-optional { color: rgba(0, 0, 0, 0.45); font-size: 12px; font-weight: 400; }
+.field-error { margin: 8px 0 0; color: #ff4d4f; font-size: 13px; }
+
+.ant-modal-form .ant-form-item { margin-bottom: 14px; }
+.ant-modal-form .ant-form-item-label > label,
+.ant-form .ant-form-item-label > label { color: rgba(0, 0, 0, 0.88); }
+.modal-footer { display: flex; justify-content: flex-end; margin-top: 18px; }
+
+.attachment-dropzone {
+  position: relative;
+  min-height: 104px;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px dashed #91caff;
+  border-radius: 6px;
+  background: #fafcff;
+  color: rgba(0, 0, 0, 0.65);
+  text-align: center;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.attachment-dropzone:hover,
+.attachment-dropzone.is-dragging { border-color: #1677ff; background: #f0f7ff; }
+
+/* 粘贴目标高亮（tasks 5.1）：与拖拽高亮区分，额外加 box-shadow 强调“已接收粘贴” */
+.attachment-dropzone.is-paste-target {
+  border-color: #1677ff;
+  background: #e6f4ff;
+  box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.15);
+}
+
+/* 键盘可达性 focus ring（tasks 5.2，对应 spec "可访问性与用户反馈 / 键盘可达性"） */
+.attachment-dropzone:focus-visible {
+  outline: 2px solid #1677ff;
+  outline-offset: 2px;
+  border-color: #1677ff;
+}
+
+.attachment-dropzone input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 远程图片提示条（tasks 5.3）：与附件区上下留白协调 */
+.attachment-remote-hint { margin: 8px 0; }
+
+/* 远程图片 URL 列表（tasks 5.4）：长 URL 不撑破布局，多项可滚动 */
+.attachment-remote-hint-list {
+  max-height: 160px;
+  margin: 6px 0 0;
+  padding: 0 0 0 18px;
+  overflow-y: auto;
+  list-style: disc;
+}
+.attachment-remote-hint-list li {
+  margin: 2px 0;
+  color: rgba(0, 0, 0, 0.65);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  word-break: break-all;
+}
+.attachment-remote-hint-list li span { user-select: all; }
+
+.attachment-upload {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.attachment-list {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.attachment-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid #f0f0f0;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.attachment-row img,
+.attachment-list img {
+  display: block;
+  max-width: min(100%, 640px);
+  max-height: 420px;
+  margin-top: 8px;
+  object-fit: contain;
+}
+
+.attachment-preview-state { color: #ad6800; font-size: 13px; }
+.edit-no-attachment { margin: 12px 0 0; color: rgba(0, 0, 0, 0.45); font-size: 13px; }
+.detail-modal-body h3 { margin: 20px 0 8px; font-size: 15px; }
+.detail-title { margin: 0 0 16px; color: rgba(0, 0, 0, 0.88); font-size: 17px; }
+.detail-content { margin: 0; white-space: pre-wrap; }
+
+.attachment-preview-modal .ant-modal-body { padding-top: 8px; }
+.attachment-preview-dialog { display: flex; flex-direction: column; height: min(72vh, 760px); }
+.attachment-preview-dialog iframe { flex: 1; width: 100%; min-height: 360px; border: 1px solid #f0f0f0; }
+.attachment-preview-dialog > img { flex: 1; min-height: 0; width: 100%; object-fit: contain; }
+.preview-disclaimer { margin: 0 0 10px; color: rgba(0, 0, 0, 0.45); font-size: 13px; }
+
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+  background: #f0f2f5;
+}
+
+.login-card { width: min(100%, 400px); }
+.login-brand { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 8px; }
+.login-brand-icon { color: #1677ff; font-size: 26px; }
+.login-brand-title { font-size: 20px; font-weight: 600; color: rgba(0, 0, 0, 0.88); }
+.login-hint { margin: 0 0 20px; text-align: center; color: rgba(0, 0, 0, 0.45); font-size: 13px; }
+.login-alert { margin-bottom: 16px; }
+.login-footer { margin: 16px 0 0; text-align: center; color: rgba(0, 0, 0, 0.45); font-size: 12px; }
+
+.app-user-box { display: flex; align-items: center; gap: 10px; }
+.app-global-search { width: min(360px, 32vw); margin-left: auto; margin-right: 24px; }
+.app-user-name { color: rgba(0, 0, 0, 0.88); font-size: 14px; }
+.app-user-role { color: rgba(0, 0, 0, 0.45); font-size: 12px; }
+.app-loading { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+.notification-bell { width: 32px; height: 32px; padding: 0; font-size: 17px; }
+.requirement-page-actions { display: flex; align-items: center; gap: 8px; }
+
+.user-department-select .ant-select-selection-item {
+  max-width: 5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-department-select-popup .ant-select-item-option-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .main-content { padding: 16px; }
+  .login-page { padding: 16px; }
+  .app-user-name { display: none; }
+  .page-header { min-height: 68px; padding: 12px 16px; }
+  .page-header h1 { font-size: 18px; }
+  .requirement-page-actions { width: 100%; }
+  .requirement-page-actions .ant-btn { flex: 1; }
+  .filter-card .ant-card-body,
+  .list-table-card .ant-card-body { padding: 16px; }
+  .attachment-upload { grid-template-columns: 1fr; }
+  .attachment-row { align-items: flex-start; flex-direction: column; }
+  .pagination-bar { align-items: flex-start; flex-direction: column; }
+  .pagination-bar .ant-pagination { max-width: 100%; overflow-x: auto; }
+  .attachment-preview-dialog { height: min(68vh, 640px); }
+}
