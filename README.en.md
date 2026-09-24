@@ -1,4 +1,4 @@
-# XQFX · Requirements Collection and Management Platform
+# XQSJ · Requirements Collection and Management Platform
 
 [简体中文](README.md) | **English**
 
