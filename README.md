@@ -1,4 +1,4 @@
-# XQFX · 需求收集与管理平台
+# XQSJ · 需求收集与管理平台
 
 **简体中文** | [English](README.en.md)
 
